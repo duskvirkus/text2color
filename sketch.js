@@ -1,6 +1,8 @@
 let tc;
 let c;
 
+let backspaceCount = 31;
+
 setup = () => {
 	createCanvas(windowWidth, windowHeight);
 	tc = new TextContainer(createVector(width/2, height/2), "");
@@ -12,6 +14,32 @@ draw = () => {
 	tc.display();
 	c.update(tc);
 	c.display();
+	backspace();
+}
+
+keyTyped = () => {
+	tc.addLetter(key);
+}
+
+backspace = () => {
+	if (backspaceCount === 30) {
+		tc.removeAll();
+	} else if (backspaceCount < 30) {
+		backspaceCount++;
+	}
+}
+
+keyPressed = () => {
+	if (keyCode === BACKSPACE) {
+		tc.removeLast();
+		backspaceCount = 0;
+	}
+}
+
+keyReleased = () => {
+	if (keyCode === BACKSPACE) {
+		backspaceCount = 31;
+	}
 }
 
 class TextContainer {
@@ -45,6 +73,20 @@ class TextContainer {
 
 	getHeight() {
 		return this.tSize;
+	}
+
+	addLetter(key) {
+		this.s = this.s + key;
+	}
+
+	removeLast() {
+		if (this.s.length > 0) {
+			this.s = this.s.substring(0, this.s.length - 1);
+		}
+	}
+
+	removeAll() {
+		this.s = "";
 	}
 }
 
