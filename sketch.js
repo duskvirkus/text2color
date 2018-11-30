@@ -5,7 +5,7 @@ let ttc;
 let backspaceCount = 31;
 
 setup = () => {
-	createCanvas(windowWidth - 45, windowHeight);
+	createCanvas(windowWidth, windowHeight);
 	tc = new TextContainer(createVector(width/2, height/2), "");
 	c = new Curser(createVector(width/2, height/2));
 	ttc = new TextToColor();
