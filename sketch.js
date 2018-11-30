@@ -1,5 +1,6 @@
 let tc;
 let c;
+let ttc;
 
 let backspaceCount = 31;
 
@@ -7,10 +8,19 @@ setup = () => {
 	createCanvas(windowWidth - 45, windowHeight);
 	tc = new TextContainer(createVector(width/2, height/2), "");
 	c = new Curser(createVector(width/2, height/2));
+	ttc = new TextToColor();
+	ttc.setAnalyzer("CUSTOM", s => {
+		let r, g, b;
+		if (s.length == 0) {
+			return color(255);
+		} else {
+			return s.length < 11 ? color(255 - s.length * 25) : color(0);
+		}
+	});
 }
 
 draw = () => {
-	background(255);
+	background(ttc.analyze(tc.getText()));
 	tc.update();
 	tc.display();
 	c.update(tc);
@@ -101,6 +111,10 @@ class TextContainer {
 		this.s = "";
 		this.setTextSize(this.maxSize);
 	}
+
+	getText() {
+		return this.s;
+	}
 }
 
 class Curser {
@@ -142,4 +156,25 @@ class Curser {
 		}
 	}
 
+}
+
+class TextToColor {
+	constructor() {
+		this.analyzer = null;
+		this.setup = false;
+	}
+
+	analyze(s) {
+		console.assert(this.setup, "Need to use setAnalyzer() method before using analyze()!");
+		return this.analyzer(s);
+	}
+
+	setAnalyzer(type, custom) {
+		this.setup = true;
+		if (type == "CUSTOM") {
+			this.analyzer = custom;
+		} else {
+			this.setup = false;
+		}
+	}
 }
