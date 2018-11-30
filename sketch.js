@@ -4,13 +4,14 @@ let c;
 let backspaceCount = 31;
 
 setup = () => {
-	createCanvas(windowWidth, windowHeight);
+	createCanvas(windowWidth - 45, windowHeight);
 	tc = new TextContainer(createVector(width/2, height/2), "");
 	c = new Curser(createVector(width/2, height/2));
 }
 
 draw = () => {
 	background(255);
+	tc.update();
 	tc.display();
 	c.update(tc);
 	c.display();
@@ -48,7 +49,12 @@ class TextContainer {
 	constructor(location, s) {
 		this.location = location;
 		this.s = s;
-		this.tSize = height/15;
+		this.maxSize = height/10;
+		this.tSize = this.maxSize;
+	}
+
+	update() {
+		this.resizeText();
 	}
 
 	display() {
@@ -63,12 +69,17 @@ class TextContainer {
 		this.tSize = tSize;
 	}
 
-	getWidth() {
-		if (this.s.length > 0) {
-			return textWidth(this.s);
-		} else {
-			return 0;
+	resizeText() {
+		if (this.getWidth() > width - width/20) {
+			while (this.getWidth() > width - width/20) {
+				this.setTextSize(this.tSize - 1);
+				textSize(this.tSize);
+			}
 		}
+	}
+
+	getWidth() {
+		return textWidth(this.s);
 	}
 
 	getHeight() {
@@ -83,10 +94,12 @@ class TextContainer {
 		if (this.s.length > 0) {
 			this.s = this.s.substring(0, this.s.length - 1);
 		}
+		this.setTextSize(this.maxSize);
 	}
 
 	removeAll() {
 		this.s = "";
+		this.setTextSize(this.maxSize);
 	}
 }
 
