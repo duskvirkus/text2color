@@ -1,7 +1,3 @@
-let textContainer;
-let curser;
-let textToColor;
-
 setupCanvas = () => {
 	createCanvas(windowWidth, windowHeight);
 }
