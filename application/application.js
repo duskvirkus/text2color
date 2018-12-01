@@ -16,6 +16,9 @@ setup = () => {
 	setupCanvas();
 	setupObjects();
 	loadAnalyzers();
+	if (testing) {
+		setupTesting();
+	}
 }
 
 draw = () => {
@@ -25,4 +28,7 @@ draw = () => {
 	curser.update(textContainer);
 	curser.display();
 	backspace();
+	if (testing) {
+		drawTesting();
+	}
 }
