@@ -6,12 +6,14 @@ class TextToColor {
 		this.setup = false;
 	}
 
-  loadAnalyzer(analyzer, creator) {
+  loadAnalyzer(analyzer, name, creator) {
     this.analyzers.push({
       analyzer: analyzer,
+			name: name,
       creator: creator
     });
     this.randomAnalyzer();
+		console.log(this.analyzers);
   }
 
   randomAnalyzer() {
@@ -31,5 +33,14 @@ class TextToColor {
   getCreator() {
     return this.analyzer.creator;
   }
+
+	setAnalyzerByName(name) {
+		for (let i = 0; i < this.analyzers.length; i++) {
+			if (this.analyzers[i].name == name) {
+				this.setAnalyzer(this.analyzers[i]);
+			}
+		}
+		console.log(this.analyzer);
+	}
 
 }

@@ -1,4 +1,4 @@
-let testing = true;
+testing = true;
 
 setupTesting = () => {
 
