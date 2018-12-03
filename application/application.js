@@ -16,11 +16,13 @@ setup = () => {
 	if (testing) {
 		setupTesting();
 	}
+	textColor = color(0);
 }
 
 draw = () => {
 	drawUI();
-	background(textToColor.analyze(textContainer.getText()));
+	setColors();
+	background(currentColor);
 	textContainer.update();
 	textContainer.display();
 	curser.update(textContainer);
@@ -29,4 +31,9 @@ draw = () => {
 	if (testing) {
 		drawTesting();
 	}
+}
+
+setColors = () => {
+	currentColor = textToColor.analyze(textContainer.getText());
+	brightness(currentColor) > 50 ? textColor = color(0) : textColor = color(255);
 }

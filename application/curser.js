@@ -29,7 +29,7 @@ class Curser {
 
 	display() {
 		if (this.visible()) {
-			stroke(0);
+			stroke(textColor);
 			strokeWeight(width/200);
 			line(this.location.x, this.location.y - this.h, this.location.x, this.location.y + this.h);
 		}

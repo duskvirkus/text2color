@@ -6,6 +6,9 @@ let textToColor;
 
 let canvas;
 
+let textColor;
+let currentColor;
+
 preload = () => {
 
 }
