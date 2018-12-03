@@ -13,7 +13,6 @@ class TextToColor {
       creator: creator
     });
     this.randomAnalyzer();
-		console.log(this.analyzers);
   }
 
   randomAnalyzer() {

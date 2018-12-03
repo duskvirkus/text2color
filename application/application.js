@@ -1,5 +1,5 @@
 setupCanvas = () => {
-	createCanvas(windowWidth, windowHeight);
+	canvas = createCanvas(windowWidth, windowHeight - 56);
 }
 
 setupObjects = () => {
@@ -12,12 +12,14 @@ setup = () => {
 	setupCanvas();
 	setupObjects();
 	loadAnalyzers();
+	setupUI();
 	if (testing) {
 		setupTesting();
 	}
 }
 
 draw = () => {
+	drawUI();
 	background(textToColor.analyze(textContainer.getText()));
 	textContainer.update();
 	textContainer.display();
