@@ -8,7 +8,6 @@ visualEquivalentDigit = s => {
     let sat = 50;
     let bri = 50;
     for (let i = 0; i < s.length; i++) {
-      console.log(i % 3 == 0);
       if (i % 3 == 0) {
         hue += visualEquivalentDigitConverter(s.charAt(i));
       } else if (i % 3 == 1) {
@@ -25,10 +24,8 @@ visualEquivalentDigit = s => {
 }
 
 visualEquivalentDigitConverter = c => {
-  console.log(c);
   console.assert(c.length == 1, "Unexpected input to visualEquivalentDigitConverter() method.");
   c = c.toUpperCase();
-  console.log(c);
   switch (c) {
     case 'D':
     case 'O':
