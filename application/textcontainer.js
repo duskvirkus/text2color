@@ -16,7 +16,7 @@ class TextContainer {
 		textAlign(CENTER, CENTER);
 		textSize(this.tSize);
 		noStroke();
-		fill(0);
+		fill(textColor);
 		text(this.s, this.location.x, this.location.y);
 	}
 
