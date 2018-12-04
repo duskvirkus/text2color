@@ -35,4 +35,9 @@ class Curser {
 		}
 	}
 
+	// origin = p5.Vector
+	setOrigin(origin) {
+		this.origin = origin;
+	}
+
 }
