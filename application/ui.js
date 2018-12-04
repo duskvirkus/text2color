@@ -1,4 +1,4 @@
-let nav;
+let analyzerButtons = [];
 
 setupUI = () => {
 
