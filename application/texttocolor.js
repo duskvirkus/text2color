@@ -12,6 +12,11 @@ class TextToColor {
 			name: name,
       creator: creator
     });
+		let button = new Button(name, select('#analyzerButtons'));
+		button.setAction(() => {
+			textToColor.setAnalyzerByName(name);
+		});
+		analyzerButtons.push(button);
     this.randomAnalyzer();
   }
 
