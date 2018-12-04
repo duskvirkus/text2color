@@ -44,7 +44,6 @@ class TextToColor {
 				this.setAnalyzer(this.analyzers[i]);
 			}
 		}
-		console.log(this.analyzer);
 	}
 
 }

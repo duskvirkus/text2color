@@ -1,5 +1,6 @@
 setupCanvas = () => {
-	canvas = createCanvas(windowWidth, windowHeight - 56);
+	canvas = createCanvas(windowWidth, windowHeight);
+	canvas.parent(select('#canvasSpan'));
 }
 
 setupObjects = () => {
@@ -17,6 +18,7 @@ setup = () => {
 		setupTesting();
 	}
 	textColor = color(0);
+	resize();
 }
 
 draw = () => {
@@ -36,6 +38,7 @@ draw = () => {
 setColors = () => {
 	currentColor = textToColor.analyze(textContainer.getText());
 	brightness(currentColor) > 50 ? textColor = color(0) : textColor = color(255);
+	updateInfo(currentColor);
 }
 
 windowResized = () => {
