@@ -60,4 +60,9 @@ class TextContainer {
 	getText() {
 		return this.s;
 	}
+
+	// location = p5.Vector
+	setLocation(location) {
+		this.location = location;
+	}
 }

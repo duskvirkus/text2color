@@ -37,3 +37,7 @@ setColors = () => {
 	currentColor = textToColor.analyze(textContainer.getText());
 	brightness(currentColor) > 50 ? textColor = color(0) : textColor = color(255);
 }
+
+windowResized = () => {
+	resize();
+}
