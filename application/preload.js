@@ -9,6 +9,8 @@ let canvas;
 let textColor;
 let currentColor;
 
-preload = () => {
+let font;
 
+preload = () => {
+  font = loadFont('./fonts/OpenSans-Regular.ttf');
 }

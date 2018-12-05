@@ -23,6 +23,7 @@ setupUI = () => {
   infoHue = select('#infoHue');
   infoSaturation = select('#infoSaturation');
   infoBrightness = select('#infoBrightness');
+  textFont(font);
 }
 
 drawUI = () => {

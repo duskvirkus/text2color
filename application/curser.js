@@ -31,7 +31,7 @@ class Curser {
 		if (this.visible()) {
 			stroke(textColor);
 			strokeWeight(width/200);
-			line(this.location.x, this.location.y - this.h, this.location.x, this.location.y + this.h);
+			line(this.location.x, this.location.y - this.h, this.location.x, this.location.y + (this.h + 10));
 		}
 	}
 
