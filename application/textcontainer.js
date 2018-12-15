@@ -1,3 +1,4 @@
+"use strict";
 class TextContainer {
 
 	// location = p5.Vector, s = string

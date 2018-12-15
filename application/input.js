@@ -1,10 +1,11 @@
+"use strict";
 let backspaceCount = 31;
 
-keyTyped = () => {
+function keyTyped() {
 	textContainer.addLetter(key);
 }
 
-backspace = () => {
+function backspace() {
 	if (backspaceCount === 30) {
 		textContainer.removeAll();
 	} else if (backspaceCount < 30) {
@@ -12,14 +13,14 @@ backspace = () => {
 	}
 }
 
-keyPressed = () => {
+function keyPressed() {
 	if (keyCode === BACKSPACE) {
 		textContainer.removeLast();
 		backspaceCount = 0;
 	}
 }
 
-keyReleased = () => {
+function keyReleased() {
 	if (keyCode === BACKSPACE) {
 		backspaceCount = 31;
 	}

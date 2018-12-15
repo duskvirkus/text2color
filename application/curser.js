@@ -1,3 +1,4 @@
+"use strict";
 class Curser {
 
 	// origin = p5.Vector

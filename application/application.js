@@ -1,15 +1,16 @@
-setupCanvas = () => {
+"use strict";
+function setupCanvas() {
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.parent(select('#canvasSpan'));
 }
 
-setupObjects = () => {
+function setupObjects() {
 	textContainer = new TextContainer(createVector(width/2, height/2), "");
 	curser = new Curser(createVector(width/2, height/2));
 	textToColor = new TextToColor();
 }
 
-setup = () => {
+function setup() {
 	setupCanvas();
 	setupObjects();
 	loadAnalyzers();
@@ -21,7 +22,7 @@ setup = () => {
 	resize();
 }
 
-draw = () => {
+function draw() {
 	drawUI();
 	setColors();
 	background(currentColor);
@@ -35,12 +36,12 @@ draw = () => {
 	}
 }
 
-setColors = () => {
+function setColors() {
 	currentColor = textToColor.analyze(textContainer.getText());
 	brightness(currentColor) > 50 ? textColor = color(0) : textColor = color(255);
 	updateInfo(currentColor);
 }
 
-windowResized = () => {
+function windowResized() {
 	resize();
 }

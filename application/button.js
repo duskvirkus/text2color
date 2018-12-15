@@ -1,3 +1,4 @@
+"use strict";
 class Button {
   constructor(name, parent) {
     this.button = createButton(name);

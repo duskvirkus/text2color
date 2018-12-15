@@ -1,3 +1,4 @@
+"use strict"
 let analyzerButtons = [];
 let horizontalOffset = 0;
 
@@ -9,7 +10,7 @@ let infoHue;
 let infoSaturation;
 let infoBrightness;
 
-setupUI = () => {
+function setupUI() {
   let resizeElements = selectAll('.resizeEvent');
   for (let i = 0; i < resizeElements.length; i++) {
     resizeElements[i].mousePressed(resizeSmooth);
@@ -26,12 +27,12 @@ setupUI = () => {
   textFont(font);
 }
 
-drawUI = () => {
+function drawUI() {
 
 }
 
-calculateVerticalOffset = () => {
-  verticalElements = selectAll('.verticalElement');
+function calculateVerticalOffset() {
+  let verticalElements = selectAll('.verticalElement');
   let verticalOffset = 0;
   for (let i = 0; i < verticalElements.length; i++) {
     verticalOffset += verticalElements[i].height;
@@ -39,20 +40,20 @@ calculateVerticalOffset = () => {
   return verticalOffset;
 }
 
-resizeSmooth = () => {
+function resizeSmooth() {
   let smoothResize = setInterval(resize, 20);
   setTimeout(() => {
     clearInterval(smoothResize);
   }, 1000);
 }
 
-resize = () => {
+function resize() {
 	resizeCanvas(windowWidth - horizontalOffset, windowHeight - calculateVerticalOffset());
 	textContainer.setLocation(createVector(width/2, height/2));
 	curser.setOrigin(createVector(width/2, height/2));
 }
 
-infoPanelCollapse = () => {
+function infoPanelCollapse() {
   if (horizontalOffset == 0) {
     let easeInfoPanelIn = setInterval(() => {
       if (horizontalOffset < 250) {
@@ -77,7 +78,7 @@ infoPanelCollapse = () => {
 }
 
 // c = p5 color
-updateInfo = (c) => {
+function updateInfo(c) {
   colorMode(RGB, 255);
   let r = red(c).toFixed(1);
   let g = green(c).toFixed(1);
@@ -95,7 +96,7 @@ updateInfo = (c) => {
   infoBrightness.html(br);
 }
 
-hexPart = (c) => {
+function hexPart(c) {
   let part = int(c).toString(16);
   return part.length == 1 ? "0" + part : part;
 }
