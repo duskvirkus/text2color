@@ -8,7 +8,7 @@ function setupCanvas() {
 function setupObjects() {
 	textContainer = new TextContainer(createVector(width/2, height/2), "");
 	curser = new Curser(createVector(width/2, height/2));
-	textToColor = new TextToColor();
+	analyzerCollection = new AnalyzerCollection();
 }
 
 function setup() {
@@ -38,7 +38,7 @@ function draw() {
 }
 
 function setColors() {
-	currentColor = textToColor.analyze(textContainer.getText());
+	currentColor = analyzerCollection.analyze(textContainer.getText());
 	brightness(currentColor) > 50 ? textColor = color(0) : textColor = color(255);
 	updateInfo(currentColor);
 }

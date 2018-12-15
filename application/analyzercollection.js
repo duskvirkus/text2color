@@ -1,5 +1,5 @@
 "use strict";
-class TextToColor {
+class AnalyzerCollection {
 
 	constructor() {
 		this.analyzer = null;
@@ -8,16 +8,7 @@ class TextToColor {
 	}
 
   loadAnalyzer(analyzer, name, creator) {
-    this.analyzers.push({
-      analyzer: analyzer,
-			name: name,
-      creator: creator
-    });
-		let button = new Button(name, select('#analyzerButtons'));
-		button.setAction(() => {
-			textToColor.setAnalyzerByName(name);
-		});
-		analyzerButtons.push(button);
+		this.analyzers.push(new Analyzer(analyzer, name, creator));
     this.randomAnalyzer();
   }
 

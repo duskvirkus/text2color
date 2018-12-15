@@ -2,7 +2,7 @@
 let testing = false;
 let textContainer;
 let curser;
-let textToColor;
+let analyzerCollection;
 let canvas;
 let textColor;
 let currentColor;
