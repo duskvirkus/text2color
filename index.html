@@ -13,7 +13,6 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
 	<link rel="manifest" href="./images/site.webmanifest">
 	<link rel="mask-icon" href="./images/safari-pinned-tab.svg" color="#5bbad5">
-	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
 
 	<!-- Libraries -->
@@ -29,17 +28,6 @@
 
 	<!-- CSS -->
 	<link href="./styles.css" rel="stylesheet">
-
-	<style>
-		body {
-      margin:0;
-			padding:0;
-			overflow: hidden;
-		}
-		canvas {
-			margin:auto;
-		}
-	</style>
 
 	<!-- Analyzers  -->
 	<script src="./analyzers/visualequivalentdigit.js"></script>
@@ -91,7 +79,7 @@
 
 	<div class="d-flex flex-nowrap">
 		<span id="canvasSpan"></span>
-		<div style="width:250px;" id="infoPanel">
+		<div id="infoPanel">
 			<div class="m-3">
 				<h5>Information</h5>
 				Hex #<span id="infoHex"></span>
@@ -112,8 +100,8 @@
 	</div>
 
 
-	<div style="bottom: 0; right: 0"class="m-3 position-fixed">
-		<button role="button" style="width:38px;" class="btn btn-light rounded-circle resizeEvent" id="infoButton">i</button>
+	<div class="m-3 position-fixed" id="infoButtonContainer">
+		<button role="button" class="btn btn-light rounded-circle resizeEvent" id="infoButton">i</button>
 	</div>
 
 </body>

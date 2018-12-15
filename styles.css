@@ -1,3 +1,23 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  margin:0;
+  padding:0;
+  overflow: hidden;
+}
+
+canvas {
+  margin:auto;
+}
+
+#infoButton {
+  width:38px;
+}
+
+#infoButtonContainer {
+  bottom: 0;
+  right: 0
+}
+
+#infoPanel {
+  width:250px;
 }
