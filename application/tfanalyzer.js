@@ -18,8 +18,8 @@ function tfAnalyze(s, model) {
 
 class TFAnalyzer extends Analyzer {
 
-  constructor(name, creator) {
-    super(name, creator);
+  constructor(name, creator, description) {
+    super(name, creator, description);
     this.modelLoaded = false;
   }
 

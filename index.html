@@ -38,7 +38,7 @@
 	<link href="./styles.css" rel="stylesheet">
 
 	<!-- Analyzers  -->
-	<script src="./analyzers/visualequivalentdigit.js"></script>
+	<script src="./analyzers/characterlookconverter.js"></script>
 	<script src="./analyzers/asciigray.js"></script>
 
 	<!-- Pass Through Functions -->
@@ -54,7 +54,6 @@
 	<script src="./application/loadanalyzers.js"></script>
 	<script src="./application/button.js"></script>
 	<script src="./application/preload.js"></script>
-	<script src="./application/testing.js"></script>
 	<script src="./application/application.js"></script>
 
 </head>
@@ -77,7 +76,7 @@
 
 	<div class="collapse multi-collapse verticalElement" id="settings">
 		<div class="m-3">
-			<h5>Settings</h5>
+			<!-- <h5>Settings</h5> -->
 			<span id="analyzerButtons"></span>
 		</div>
   </div>
@@ -94,19 +93,19 @@
 		<div id="infoPanel">
 			<div class="m-3">
 				<h5>Information</h5>
-				Hex #<span id="infoHex"></span>
+				#<span id="infoHex"></span> <small>Hex</small>
 				<br>
-				Red <span id="infoRed"></span> / 255
+				<span id="infoRed"></span> / 255 <small>Red</small>
 				<br>
-				Green <span id="infoGreen"></span> / 255
+				<span id="infoGreen"></span> / 255 <small>Green</small>
 				<br>
-				Blue <span id="infoBlue"></span> / 255
+				<span id="infoBlue"></span> / 255 <small>Blue</small>
 				<br>
-				Hue <span id="infoHue"></span> / 100
+				<span id="infoHue"></span> / 100 <small>Hue</small>
 				<br>
-				Saturation <span id="infoSaturation"></span> / 100
+				<span id="infoSaturation"></span> / 100 <small>Saturation</small>
 				<br>
-				Brightness <span id="infoBrightness"></span> / 100
+				<span id="infoBrightness"></span> / 100 <small>Brightness</small>
 			</div>
 		</div>
 	</div>

@@ -7,15 +7,15 @@ class AnalyzerCollection {
 		this.setup = false;
 	}
 
-  loadAnalyzer(analyzer, name, creator) {
-		let analyzerToPush = new Analyzer(name, creator);
+  loadAnalyzer(analyzer, name, creator, description) {
+		let analyzerToPush = new Analyzer(name, creator, description);
 		analyzerToPush.setAnalyzer(analyzer);
 		this.analyzers.push(analyzerToPush);
     this.randomAnalyzer();
   }
 
-	loadTFAnalyzer(modelPath, name, creator) {
-		let analyzerToPush = new TFAnalyzer(name, creator);
+	loadTFAnalyzer(modelPath, name, creator, description) {
+		let analyzerToPush = new TFAnalyzer(name, creator, description);
 		analyzerToPush.setAnalyzer(modelPath);
 		this.analyzers.push(analyzerToPush);
 	}

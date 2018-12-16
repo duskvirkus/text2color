@@ -104,6 +104,7 @@ function setupUI() {
   infoSaturation = select('#infoSaturation');
   infoBrightness = select('#infoBrightness');
   textFont(font);
+	enableTooltips();
 }
 
 function drawUI() {
@@ -178,4 +179,10 @@ function updateInfo(c) {
 function hexPart(c) {
   let part = int(c).toString(16);
   return part.length == 1 ? "0" + part : part;
+}
+
+function enableTooltips() {
+  $(() => {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 }

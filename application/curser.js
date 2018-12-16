@@ -17,7 +17,7 @@ class Curser {
 		if (textManager.getWidth() == 0) {
 			return 0;
 		} else {
-			return textManager.getWidth()/2 + width/200;
+			return textManager.getWidth()/2 + 8;
 		}
 	}
 
@@ -30,8 +30,9 @@ class Curser {
 
 	display() {
 		if (this.visible()) {
+			strokeCap(PROJECT);
 			stroke(textColor);
-			strokeWeight(width/200);
+			strokeWeight(4);
 			line(this.location.x, this.location.y - this.h, this.location.x, this.location.y + (this.h + 10));
 		}
 	}
