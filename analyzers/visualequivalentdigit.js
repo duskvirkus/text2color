@@ -1,4 +1,5 @@
-visualEquivalentDigit = s => {
+"use strict";
+function visualEquivalentDigit(s) {
   if (s.length == 0) {
     colorMode(RGB, 255);
     return color(255);
@@ -23,7 +24,7 @@ visualEquivalentDigit = s => {
   }
 }
 
-visualEquivalentDigitConverter = c => {
+function visualEquivalentDigitConverter(c) {
   console.assert(c.length == 1, "Unexpected input to visualEquivalentDigitConverter() method.");
   c = c.toUpperCase();
   switch (c) {

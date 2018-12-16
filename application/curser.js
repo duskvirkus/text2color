@@ -1,3 +1,4 @@
+"use strict";
 class Curser {
 
 	// origin = p5.Vector
@@ -7,16 +8,16 @@ class Curser {
 		this.h = height/30;
 	}
 
-	update(textContainer) {
-		this.location = createVector(this.origin.x + this.calculateOffset(textContainer), this.origin.y);
-		this.h = textContainer.getHeight()/2;
+	update(textManager) {
+		this.location = createVector(this.origin.x + this.calculateOffset(textManager), this.origin.y);
+		this.h = textManager.getHeight()/2;
 	}
 
-	calculateOffset(textContainer) {
-		if (textContainer.getWidth() == 0) {
+	calculateOffset(textManager) {
+		if (textManager.getWidth() == 0) {
 			return 0;
 		} else {
-			return textContainer.getWidth()/2 + width/200;
+			return textManager.getWidth()/2 + width/200;
 		}
 	}
 

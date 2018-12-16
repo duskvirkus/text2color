@@ -1,16 +1,13 @@
+"use strict";
 let testing = false;
-
-let textContainer;
+let textManager;
 let curser;
-let textToColor;
-
+let analyzerCollection;
 let canvas;
-
 let textColor;
 let currentColor;
-
 let font;
 
-preload = () => {
+function preload() {
   font = loadFont('./fonts/OpenSans-Regular.ttf');
 }

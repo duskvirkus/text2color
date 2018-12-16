@@ -1,9 +1,10 @@
+"use strict";
 testing = true;
 
-setupTesting = () => {
+function setupTesting() {
 
 }
 
-drawTesting = () => {
+function drawTesting() {
 
 }
