@@ -8,9 +8,17 @@ class AnalyzerCollection {
 	}
 
   loadAnalyzer(analyzer, name, creator) {
-		this.analyzers.push(new Analyzer(analyzer, name, creator));
+		let analyzerToPush = new Analyzer(name, creator);
+		analyzerToPush.setAnalyzer(analyzer);
+		this.analyzers.push(analyzerToPush);
     this.randomAnalyzer();
   }
+
+	loadTFAnalyzer(modelPath, name, creator) {
+		let analyzerToPush = new TFAnalyzer(name, creator);
+		analyzerToPush.setAnalyzer(modelPath);
+		this.analyzers.push(analyzerToPush);
+	}
 
   randomAnalyzer() {
     let i = int(random(this.analyzers.length));
@@ -19,16 +27,22 @@ class AnalyzerCollection {
 
 	analyze(s) {
 		console.assert(this.analyzers.length > 0, "Need to use loadAnalyzer() method before using analyze()!");
-		return this.analyzer.analyzer(s);
+		let analyzeMethod = this.analyzer.getAnalyzer();
+		if (this.analyzer.constructor.name == 'Analyzer') {
+			return analyzeMethod(s);
+		} else if (this.analyzer.modelLoaded) {
+			return tfAnalyze(s, this.analyzer.model);
+		} else {
+			return color(255);
+		}
 	}
 
 	setAnalyzer(analyzer) {
 		this.analyzer = analyzer;
+		if (this.analyzer.constructor.name == 'TFAnalyzer') {
+			this.analyzer.loadModel();
+		}
 	}
-
-  getCreator() {
-    return this.analyzer.creator;
-  }
 
 	setAnalyzerByName(name) {
 		for (let i = 0; i < this.analyzers.length; i++) {
