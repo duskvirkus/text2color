@@ -1,5 +1,5 @@
 "use strict";
-function visualEquivalentDigit(s) {
+function characterLookConverter(s) {
   if (s.length == 0) {
     colorMode(RGB, 255);
     return color(255);
@@ -10,11 +10,11 @@ function visualEquivalentDigit(s) {
     let bri = 50;
     for (let i = 0; i < s.length; i++) {
       if (i % 3 == 0) {
-        hue += visualEquivalentDigitConverter(s.charAt(i));
+        hue += characterLookDigitConverter(s.charAt(i));
       } else if (i % 3 == 1) {
-        sat += visualEquivalentDigitConverter(s.charAt(i));
+        sat += characterLookDigitConverter(s.charAt(i));
       } else { // i % 3 == 2
-        bri += visualEquivalentDigitConverter(s.charAt(i));
+        bri += characterLookDigitConverter(s.charAt(i));
       }
     }
     hue %= 100;
@@ -24,7 +24,7 @@ function visualEquivalentDigit(s) {
   }
 }
 
-function visualEquivalentDigitConverter(c) {
+function characterLookDigitConverter(c) {
   console.assert(c.length == 1, "Unexpected input to visualEquivalentDigitConverter() method.");
   c = c.toUpperCase();
   switch (c) {
