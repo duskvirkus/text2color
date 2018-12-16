@@ -1,5 +1,5 @@
 "use strict";
-class TextContainer {
+class TextManager {
 
 	// location = p5.Vector, s = string
 	constructor(location, s) {

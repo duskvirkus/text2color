@@ -6,7 +6,7 @@ function setupCanvas() {
 }
 
 function setupObjects() {
-	textContainer = new TextContainer(createVector(width/2, height/2), "");
+	textManager = new TextManager(createVector(width/2, height/2), "");
 	curser = new Curser(createVector(width/2, height/2));
 	analyzerCollection = new AnalyzerCollection();
 }
@@ -27,9 +27,9 @@ function draw() {
 	drawUI();
 	setColors();
 	background(currentColor);
-	textContainer.update();
-	textContainer.display();
-	curser.update(textContainer);
+	textManager.update();
+	textManager.display();
+	curser.update(textManager);
 	curser.display();
 	backspace();
 	if (testing) {
@@ -38,7 +38,7 @@ function draw() {
 }
 
 function setColors() {
-	currentColor = analyzerCollection.analyze(textContainer.getText());
+	currentColor = analyzerCollection.analyze(textManager.getText());
 	brightness(currentColor) > 50 ? textColor = color(0) : textColor = color(255);
 	updateInfo(currentColor);
 }
@@ -52,12 +52,12 @@ function windowResized() {
 let backspaceCount = 31;
 
 function keyTyped() {
-	textContainer.addLetter(key);
+	textManager.addLetter(key);
 }
 
 function backspace() {
 	if (backspaceCount === 30) {
-		textContainer.removeAll();
+		textManager.removeAll();
 	} else if (backspaceCount < 30) {
 		backspaceCount++;
 	}
@@ -65,7 +65,7 @@ function backspace() {
 
 function keyPressed() {
 	if (keyCode === BACKSPACE) {
-		textContainer.removeLast();
+		textManager.removeLast();
 		backspaceCount = 0;
 	}
 }
@@ -128,7 +128,7 @@ function resizeSmooth() {
 
 function resize() {
 	resizeCanvas(windowWidth - horizontalOffset, windowHeight - calculateVerticalOffset());
-	textContainer.setLocation(createVector(width/2, height/2));
+	textManager.setLocation(createVector(width/2, height/2));
 	curser.setOrigin(createVector(width/2, height/2));
 }
 

@@ -1,6 +1,6 @@
 "use strict";
 let testing = false;
-let textContainer;
+let textManager;
 let curser;
 let analyzerCollection;
 let canvas;
