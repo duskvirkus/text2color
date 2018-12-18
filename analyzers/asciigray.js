@@ -1,4 +1,5 @@
 "use strict";
+
 function asciiGray(s) {
   colorMode(RGB, 255);
   let gray = 0;

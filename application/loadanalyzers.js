@@ -1,4 +1,5 @@
 "use strict";
+
 function loadAnalyzers() {
   analyzerCollection.loadTFAnalyzer(
     './tfanalyzers/csscolors.json',

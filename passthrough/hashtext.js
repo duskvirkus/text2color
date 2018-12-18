@@ -1,4 +1,5 @@
 "use strict";
+
 function hashText(text, hashSize) {
   if (!hashSize) hashSize = 16;
   let hashed = [];

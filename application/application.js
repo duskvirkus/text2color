@@ -1,50 +1,92 @@
 "use strict";
 // Core Application
+
+let testing = false;
+let textManager;
+let textDisplayer;
+let analyzerCollection;
+let canvas;
+let textColor;
+let currentColor;
+let font;
+let informationPanel;
+
+function preload() {
+  font = loadFont('./fonts/OpenSans-Regular.ttf');
+}
+
+/**
+ * Setup Canvas
+ * 
+ * Sets the canvas variable to a new canvas with the size of windowWidth and 
+ * windowHeight. Then places the canvas in the #canvasSpan on the html page.
+ */
 function setupCanvas() {
-	canvas = createCanvas(windowWidth, windowHeight);
-	canvas.parent(select('#canvasSpan'));
+  canvas = createCanvas(windowWidth, windowHeight);
+  canvas.parent(select('#canvasSpan'));
 }
 
+/**
+ * Setup Objects
+ * 
+ * Creates the textManager, textDisplayer, and analyzerCollection with 
+ * textDisplayer at centered within the canvas. The analyzerCollection is empty.
+ */
 function setupObjects() {
-	textManager = new TextManager(createVector(width/2, height/2), "");
-	curser = new Curser(createVector(width/2, height/2));
-	analyzerCollection = new AnalyzerCollection();
+  textManager = new TextManager();
+  textDisplayer = new TextDisplayer(textManager, createVector(width / 2, height / 2));
+  analyzerCollection = new AnalyzerCollection();
 }
 
+/**
+ * Setup
+ * 
+ * This is the setup method that p5 calls at the one time after page is loaded. 
+ * In this case it sets up the canvas, all the objects, loads in the Analyzers 
+ * the User Interface, and sets textColor to black to avoid an error, and the 
+ * calls the resize function to resize the canvas to account for the navbar at 
+ * the top of the page.
+ */
 function setup() {
-	setupCanvas();
-	setupObjects();
-	loadAnalyzers();
-	setupUI();
-	if (testing) {
-		setupTesting();
-	}
-	textColor = color(0);
-	resize();
+  setupCanvas();
+  setupObjects();
+  loadAnalyzers();
+  setupUI();
+  textColor = color(0);
+  resize();
 }
 
+/**
+ * Draw
+ * 
+ * Called by p5 continuously after setup unless told otherwise. Will update the 
+ * currentColor variable, update and display both the textManager and curser, 
+ * and run the backspace function.
+ */
 function draw() {
-	drawUI();
-	setColors();
-	background(currentColor);
-	textManager.update();
-	textManager.display();
-	curser.update(textManager);
-	curser.display();
-	backspace();
-	if (testing) {
-		drawTesting();
-	}
+  setColor();
+  background(currentColor);
+  textDisplayer.display();
+  backspace();
 }
 
-function setColors() {
-	currentColor = analyzerCollection.analyze(textManager.getText());
-	brightness(currentColor) > 50 ? textColor = color(0) : textColor = color(255);
-	updateInfo(currentColor);
+/**
+ * Set Color
+ * 
+ * Gets a color from the TODO
+ */
+function setColor() {
+  currentColor = analyzerCollection.analyze(textManager.getText());
+  if (brightness(currentColor) > 50) {
+    textDisplayer.setTextColor(color(0));
+  } else {
+    textDisplayer.setTextColor(color(255));
+  }
+  informationPanel.update(currentColor);
 }
 
 function windowResized() {
-	resize();
+  resize();
 }
 
 // Input
@@ -52,63 +94,49 @@ function windowResized() {
 let backspaceCount = 31;
 
 function keyTyped() {
-	textManager.addLetter(key);
+  textManager.addLetter(key);
 }
 
 function backspace() {
-	if (backspaceCount === 30) {
-		textManager.removeAll();
-	} else if (backspaceCount < 30) {
-		backspaceCount++;
-	}
+  if (backspaceCount === 30) {
+    textManager.clear();
+  } else if (backspaceCount < 30) {
+    backspaceCount++;
+  }
 }
 
 function keyPressed() {
-	if (keyCode === BACKSPACE) {
-		textManager.removeLast();
-		backspaceCount = 0;
-	}
+  if (keyCode === BACKSPACE) {
+    textManager.removeLetter();
+    backspaceCount = 0;
+  }
 }
 
 function keyReleased() {
-	if (keyCode === BACKSPACE) {
-		backspaceCount = 31;
-	}
+  if (keyCode === BACKSPACE) {
+    backspaceCount = 31;
+  }
 }
 
 // User Interface
 
-let analyzerButtons = [];
 let horizontalOffset = 0;
-
-let infoHex;
-let infoRed;
-let infoGreen;
-let infoBlue;
-let infoHue;
-let infoSaturation;
-let infoBrightness;
+let informationButton;
 
 function setupUI() {
   let resizeElements = selectAll('.resizeEvent');
   for (let i = 0; i < resizeElements.length; i++) {
     resizeElements[i].mousePressed(resizeSmooth);
   }
-  let infoButton = select('#infoButton');
-  infoButton.mousePressed(infoPanelCollapse);
-  infoHex = select('#infoHex');
-  infoRed = select('#infoRed');
-  infoGreen = select('#infoGreen');
-  infoBlue = select('#infoBlue');
-  infoHue = select('#infoHue');
-  infoSaturation = select('#infoSaturation');
-  infoBrightness = select('#infoBrightness');
+  informationButton = new SelectButton('#informationButton');
+  informationButton.setDescription('Color Information');
+  informationButton.addTooltip(1);
+  informationButton.setAction(informationPanelCollapse);
+  // let infoButton = select('#infoButton');
+  // infoButton.mousePressed(infoPanelCollapse);
+  informationPanel = new InformationPanel('#infoHex', '#infoRed', '#infoGreen', '#infoBlue', '#infoHue', '#infoSaturation', '#infoBrightness');
   textFont(font);
-	enableTooltips();
-}
-
-function drawUI() {
-
+  enableTooltips();
 }
 
 function calculateVerticalOffset() {
@@ -128,12 +156,11 @@ function resizeSmooth() {
 }
 
 function resize() {
-	resizeCanvas(windowWidth - horizontalOffset, windowHeight - calculateVerticalOffset());
-	textManager.setLocation(createVector(width/2, height/2));
-	curser.setOrigin(createVector(width/2, height/2));
+  resizeCanvas(windowWidth - horizontalOffset, windowHeight - calculateVerticalOffset());
+  textDisplayer.setOrigin(createVector(width / 2, height / 2))
 }
 
-function infoPanelCollapse() {
+function informationPanelCollapse() {
   if (horizontalOffset == 0) {
     let easeInfoPanelIn = setInterval(() => {
       if (horizontalOffset < 250) {
@@ -155,30 +182,6 @@ function infoPanelCollapse() {
       horizontalOffset = 0;
     }, 260);
   }
-}
-
-// c = p5 color
-function updateInfo(c) {
-  colorMode(RGB, 255);
-  let r = red(c).toFixed(1);
-  let g = green(c).toFixed(1);
-  let b = blue(c).toFixed(1);
-  let h = hue(c).toFixed(1);
-  let s = saturation(c).toFixed(1);
-  let br = brightness(c).toFixed(1);
-  let hex = hexPart(r) + hexPart(g) + hexPart(b);
-  infoHex.html(hex);
-  infoRed.html(r);
-  infoGreen.html(g);
-  infoBlue.html(b);
-  infoHue.html(h);
-  infoSaturation.html(s);
-  infoBrightness.html(br);
-}
-
-function hexPart(c) {
-  let part = int(c).toString(16);
-  return part.length == 1 ? "0" + part : part;
 }
 
 function enableTooltips() {

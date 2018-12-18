@@ -1,4 +1,5 @@
 "use strict";
+
 function multiHotHex(number, hexDigits) {
   if (!hexDigits) hexDigits = 2;
   let hex = number.toString(16);
@@ -42,5 +43,5 @@ function multiHotHexToColor(input) {
 
 function hexToColor(hex) {
   if (hex.length != 6) return null;
-  return color(parseInt(hex.substring(0,2), 16), parseInt(hex.substring(2,4), 16), parseInt(hex.substring(4,6), 16));
+  return color(parseInt(hex.substring(0, 2), 16), parseInt(hex.substring(2, 4), 16), parseInt(hex.substring(4, 6), 16));
 }

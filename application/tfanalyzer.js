@@ -1,7 +1,7 @@
 "use strict";
 
 async function loadTfModel(path) {
-	return await tf.loadModel(path);
+  return await tf.loadModel(path);
 }
 
 function tfAnalyze(s, model) {
@@ -29,13 +29,13 @@ class TFAnalyzer extends Analyzer {
 
   loadModel() {
     loadTfModel(this.modelPath)
-  		.then((model) => {
-  			this.model = model;
-  			//this.model.summary();
-  			this.modelLoaded = true;
+      .then((model) => {
+        this.model = model;
+        //this.model.summary();
+        this.modelLoaded = true;
         return;
-  		})
-  		.catch(error => console.log(error));
+      })
+      .catch(error => console.log(error));
   }
 
 }

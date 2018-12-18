@@ -1,4 +1,5 @@
 "use strict";
+
 function characterLookConverter(s) {
   if (s.length == 0) {
     colorMode(RGB, 255);
