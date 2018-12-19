@@ -32,6 +32,9 @@ class InformationPanel {
     this.hue = select(hueSelector);
     this.saturation = select(saturationSelector);
     this.brightness = select(brightnessSelector);
+    this.panelWidth = 0;
+    this.panelWidthMax = 250;
+    this.informationPanelCollapse = this.informationPanelCollapse.bind(this);
   }
 
   /**
@@ -79,6 +82,43 @@ class InformationPanel {
   calculateHexPart(c) {
     let part = int(c).toString(16);
     return part.length == 1 ? "0" + part : part;
+  }
+
+  /**
+   * Information Panel Collapse
+   * 
+   * Will gradually increase or decrease panel width based on the size when 
+   * this function is called.
+   */
+  informationPanelCollapse() {
+    if (this.panelWidth == 0) {
+      let easeInformationPanelIn = setInterval(() => {
+        if (this.panelWidth < this.panelWidthMax) {
+          this.panelWidth += 10;
+        }
+      }, 10);
+      setTimeout(() => {
+        clearInterval(easeInformationPanelIn);
+        this.panelWidth = this.panelWidthMax;
+      }, (this.panelWidthMax + 10));
+    } else {
+      let easeInformationPanelOut = setInterval(() => {
+        if (this.panelWidth > 0) {
+          this.panelWidth -= 10;
+        }
+      }, 10);
+      setTimeout(() => {
+        clearInterval(easeInformationPanelOut);
+        this.panelWidth = 0;
+      }, (this.panelWidth + 10));
+    }
+  }
+
+  /**
+   * Get Panel Width
+   */
+  getPanelWidth() {
+    return this.panelWidth;
   }
 
 }

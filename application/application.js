@@ -1,7 +1,5 @@
 "use strict";
 // Core Application
-
-let testing = false;
 let textManager;
 let textDisplayer;
 let analyzerCollection;
@@ -121,7 +119,6 @@ function keyReleased() {
 
 // User Interface
 
-let horizontalOffset = 0;
 let informationButton;
 
 function setupUI() {
@@ -129,13 +126,11 @@ function setupUI() {
   for (let i = 0; i < resizeElements.length; i++) {
     resizeElements[i].mousePressed(resizeSmooth);
   }
+  informationPanel = new InformationPanel('#infoHex', '#infoRed', '#infoGreen', '#infoBlue', '#infoHue', '#infoSaturation', '#infoBrightness');
   informationButton = new SelectButton('#informationButton');
   informationButton.setDescription('Color Information');
   informationButton.addTooltip(1);
-  informationButton.setAction(informationPanelCollapse);
-  // let infoButton = select('#infoButton');
-  // infoButton.mousePressed(infoPanelCollapse);
-  informationPanel = new InformationPanel('#infoHex', '#infoRed', '#infoGreen', '#infoBlue', '#infoHue', '#infoSaturation', '#infoBrightness');
+  informationButton.setAction(informationPanel.informationPanelCollapse);
   textFont(font);
   enableTooltips();
 }
@@ -149,6 +144,10 @@ function calculateVerticalOffset() {
   return verticalOffset;
 }
 
+function calculateHorizontalOffset() {
+  return informationPanel.getPanelWidth();
+}
+
 function resizeSmooth() {
   let smoothResize = setInterval(resize, 20);
   setTimeout(() => {
@@ -157,32 +156,8 @@ function resizeSmooth() {
 }
 
 function resize() {
-  resizeCanvas(windowWidth - horizontalOffset, windowHeight - calculateVerticalOffset());
+  resizeCanvas(windowWidth - calculateHorizontalOffset(), windowHeight - calculateVerticalOffset());
   textDisplayer.setOrigin(createVector(width / 2, height / 2))
-}
-
-function informationPanelCollapse() {
-  if (horizontalOffset == 0) {
-    let easeInfoPanelIn = setInterval(() => {
-      if (horizontalOffset < 250) {
-        horizontalOffset += 10;
-      }
-    }, 10);
-    setTimeout(() => {
-      clearInterval(easeInfoPanelIn);
-      horizontalOffset = 250;
-    }, 260);
-  } else {
-    let easeInfoPanelOut = setInterval(() => {
-      if (horizontalOffset > 0) {
-        horizontalOffset -= 10;
-      }
-    }, 10);
-    setTimeout(() => {
-      clearInterval(easeInfoPanelOut);
-      horizontalOffset = 0;
-    }, 260);
-  }
 }
 
 function enableTooltips() {
