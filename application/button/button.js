@@ -1,8 +1,4 @@
 "use strict";
-
-// emulating static variable
-let buttonCount = 0;
-
 /**
  * Button
  * 
@@ -21,6 +17,7 @@ class Button {
    */
   constructor(button) {
     this.button = button;
+    this.setID();
   }
 
   /**
@@ -85,10 +82,23 @@ class Button {
       } else {
         this.button.attribute('title', this.description);
       }
-
+      this.enableTooltip();
     } else {
       console.log(`INFO: tooltip for ${this} was not added because there was no description. Please use setDescription() before enableTooltip().`)
     }
+  }
+
+  /**
+   * Enable Tooltip
+   * 
+   * By default tooltips aren't enabled for any elements so they must be 
+   * enabled. This will enable the tooltip for the button associated with the 
+   * instance of the class.
+   */
+  enableTooltip() {
+    // Using jquery to enable tooltip. 
+    // The tooltip() method won't work with a p5.Element.
+    $(`#${this.id}`).tooltip();
   }
 
   /**
@@ -112,4 +122,31 @@ class Button {
   setAction(action) {
     this.button.mousePressed(action);
   }
+
+  /**
+   * Set ID
+   * 
+   * Will set the button id to given string. If none is given it defaults to 
+   * whatever id has already been defined. If no id is defined it will generate 
+   * one with the format button-(aNumber).
+   * 
+   * @param {String} id : Optional
+   */
+  setID(id) {
+    if (this.button.id() == '' || id) {
+      if (id) {
+        this.id = id;
+      } else {
+        if (!Button.count) {
+          Button.count = 0;
+        }
+        Button.count++;
+        this.id = `button-${Button.count}`;
+      }
+      this.button.id(this.id)
+    } else {
+      this.id = this.button.id();
+    }
+  }
+
 }

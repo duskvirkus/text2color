@@ -34,6 +34,7 @@ class Analyzer {
     this.button = new CreateButton(this.name, select('#analyzerButtons'));
     this.button.setDescription(this.description);
     this.button.setCreator(this.creator);
+    this.button.addTooltip();
     this.button.setAction(() => {
       analyzerCollection.setAnalyzerByName(this.name);
     });

@@ -132,7 +132,6 @@ function setupUI() {
   informationButton.addTooltip(1);
   informationButton.setAction(informationPanel.informationPanelCollapse);
   textFont(font);
-  enableTooltips();
 }
 
 function calculateVerticalOffset() {
@@ -158,10 +157,4 @@ function resizeSmooth() {
 function resize() {
   resizeCanvas(windowWidth - calculateHorizontalOffset(), windowHeight - calculateVerticalOffset());
   textDisplayer.setOrigin(createVector(width / 2, height / 2))
-}
-
-function enableTooltips() {
-  $(() => {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
 }
