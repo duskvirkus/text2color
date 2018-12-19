@@ -51,6 +51,7 @@ function setup() {
   setupCanvas();
   setupObjects();
   loadAnalyzers();
+  analyzerCollection.randomAnalyzer();
   setupUI();
   textColor = color(0);
   resize();

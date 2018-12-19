@@ -2,7 +2,8 @@
 /**
  * Analyzer Class
  *
- * Contains fields associated with an analyzer function. 
+ * Keeps track of data associated with an analyzer. Not meant to be 
+ * instantiated. Use FunctionalAnalyzer or TrainedAnalyzer.
  *
  * Will create a button that is placed in the #analyzerButtons span on the html 
  * page. The button triggers an event in the analyzerCollection that sets the 
@@ -11,6 +12,7 @@
 class Analyzer {
 
   /**
+   * Constructor
    * 
    * @param {String} name 
    * @param {String} creator 
@@ -32,25 +34,9 @@ class Analyzer {
     this.button = new CreateButton(this.name, select('#analyzerButtons'));
     this.button.setDescription(this.description);
     this.button.setCreator(this.creator);
-    // this.button = new Button(this.name, this.creator, this.description, select('#analyzerButtons'));
-    this.button.setAction(() => { // TODO see if this can be done with dynamiclly
+    this.button.setAction(() => {
       analyzerCollection.setAnalyzerByName(this.name);
     });
-  }
-
-  /**
-   * 
-   * @param {function} analyzer 
-   */
-  setAnalyzer(analyzer) {
-    this.analyzer = analyzer;
-  }
-
-  /**
-   * returns function stored in this.analyzer
-   */
-  getAnalyzer() {
-    return this.analyzer;
   }
 
 }
