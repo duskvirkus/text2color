@@ -1,4 +1,11 @@
 "use strict";
+/**
+ * Character Look Converter
+ * 
+ * Calculates color based on how a character looks. Inspired by L337 speak.
+ * 
+ * @param {String} s 
+ */
 function characterLookConverter(s) {
   if (s.length == 0) {
     colorMode(RGB, 255);
@@ -24,6 +31,14 @@ function characterLookConverter(s) {
   }
 }
 
+/**
+ * Character Look Digit Converter
+ * 
+ * Helper for Character Look Converter. Takes in character and returns number 
+ * that most resembles that character.
+ * 
+ * @param {String} c : single character
+ */
 function characterLookDigitConverter(c) {
   console.assert(c.length == 1, "Unexpected input to visualEquivalentDigitConverter() method.");
   c = c.toUpperCase();
