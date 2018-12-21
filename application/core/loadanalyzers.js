@@ -44,7 +44,7 @@ function loadAnalyzers() {
     'Analyzer Name',
     'Creator Name',
     'Short description of methodology and/or inspiration.',
-    './trainedanalyzers/yourmodel.json'
+    './trainedanalyzers/yourmodelname.json'
   );
   */
 }
