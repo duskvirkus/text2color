@@ -1,4 +1,4 @@
-# Text2Color
+![Text 2 Color Logo](./images/logo-banner.png)
 
 Text2Color is a creative tool for converting text to colors in a intentional semi-random way. It was designed to assist artists and designers in generating ideas for color schemes when undertaking new projects. It was inspired by [Community Clouds](https://github.com/CodingTrain/CommunityClouds) and [Adobe Color](https://color.adobe.com). It's designed to be easy to contribute to this project. Just check out the how to contribute section before working on awesome your improvements.
 
@@ -12,7 +12,7 @@ There are 3 ways to contribute. You don't need much coding experiece to contribu
 
 ### Things to Keep in Mind
 
-Please use the [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify) extention for VS Code to match formating. As well as a tab size of 2 spaces.
+Please use the [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify) extention for VS Code to match formating or check their default specification to match the formatting yourself. The tab size used in this project is 2 spaces.
 
 ### Add a Functional Analyzer
 
