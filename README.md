@@ -20,7 +20,28 @@ Adding a functional analyzer is fairly simple. You'll create a method in a new j
 
 #### Step by Step Instructions
 
-Coming Soon
+As an example we'll create an new functional analyzer called blue velvet.
+
+1. Fork the Repository.
+2. Clone to your machine.
+3. Open in a text editor. I suggest VS Code but it doesn't matter as long as you match format.
+4. Duplicate `template.js` which is under the `functionalanalyzers` directory.
+5. Rename your file. We'll call the example `bluevelvet.js`.
+6. Write some code in the new file. Here's an example:
+```
+Example Code Comming Soon
+```
+7. Import your analyzer into the imports under the `<!-- Functional Analyzers -->` comment in the `<head>` the `index.html` page within the project directory.
+```
+Example Code Comming Soon
+```
+8. Add your analyzer to the `loadAnalyzers()` function in `application > core > loadanalyzers.js` using the template found at the bottom of the file.
+```
+Example Code Coming Soon
+```
+9. Test your using a server. I recommend the npm http-server as a simple server. To install it make sure you have [node.js installed](https://nodejs.org/en/) then use comand `npm i -g http-server`. After installing it you can use the comand  `http-server` and open a browser and navigate to [localhost:8080](localhost:8080). Select your analyzer under the settings panel.
+10. If necessary made changes to your method and continue testing.
+11. Once you think it's done commit the changes and push them to your forked repository. Then submit a pull request.
 
 ### Add a Trained Analyzer
 
