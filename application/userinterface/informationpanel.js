@@ -46,6 +46,7 @@ class InformationPanel {
    * @param {p5.Color} c 
    */
   update(c) {
+    colorMode(HSB, 100);
     colorMode(RGB, 255);
     let r = red(c).toFixed(1);
     let g = green(c).toFixed(1);
