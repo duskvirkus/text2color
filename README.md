@@ -29,19 +29,43 @@ As an example we'll create an new functional analyzer called Blue Velvet.
 5. Rename your file. We'll call the example `bluevelvet.js`.
 6. Create a method in the new file. Here's an example:
 ```
-Example Code Comming Soon
+"use strict";
+/**
+ * Blue Velvet
+ * 
+ * Creates subtlety changing blueish colors.
+ * 
+ * @param {String} text 
+ */
+function blueVelvet(text) {
+  colorMode(HSB, 360);
+  let hue = 25;
+  for (let i = 0; i < text.length; i++) {
+    hue += text.charCodeAt(i);
+  }
+  hue = hue % 50 + 200 // convert hue to be between 200 and 250
+  let brightness = randomFromNoise(100, 200);
+  return color(hue, 300, brightness);
+}
 ```
-7. Import your analyzer under the `<!-- Functional Analyzers -->` comment in the `<head>` the `index.html` page within the project directory.
+7. Import your analyzer under the `<!-- Functional Analyzers -->` comment in the `<head>` the `index.html` page within the project directory. Example:
 ```
-Example Code Comming Soon
+<script src="./functionalanalyzers/bluevelvet.js"></script>
 ```
-8. Add your analyzer to the `loadAnalyzers()` function in `application > core > loadanalyzers.js` using the template found at the bottom of the file.
+8. Add your analyzer to the `loadAnalyzers()` function in `application > core > loadanalyzers.js` using the template found at the bottom of the file. Example:
 ```
-Example Code Coming Soon
+analyzerCollection.loadFunctionalAnalyzer(
+  'Blue Velvet',
+  'Fi Graham',
+  'Creates subtlety changing blueish colors.',
+  blueVelvet
+);
 ```
 9. Test your using a server. I recommend the npm http-server as a simple server. To install it make sure you have [node.js installed](https://nodejs.org/en/) then use comand `npm i -g http-server`. After installing it you can use the comand  `http-server` and open a browser and navigate to [localhost:8080](http://localhost:8080). Select your analyzer under the settings panel and try it out.
 10. If necessary made changes to your method and continue testing.
 11. Once you think it's done commit the changes, and push them to your forked repository. Then submit a pull request.
+
+*Note: [example pull request is #21](https://github.com/figraham/text2color/pull/21/files)*
 
 ### Add a Trained Analyzer
 
