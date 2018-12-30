@@ -26,6 +26,12 @@ function loadAnalyzers() {
     'Calculates a gray value based on ASCII codes of characters.',
     asciiGray
   );
+  analyzerCollection.loadFunctionalAnalyzer(
+    'Blue Velvet',
+    'Fi Graham',
+    'Creates subtlety changing blueish colors.',
+    blueVelvet
+  );
 
   // Please do NOT change anything below this line.
   // Templates
