@@ -10,25 +10,25 @@
 function loadAnalyzers() {
   analyzerCollection.loadTrainedAnalyzer(
     'CSS Colors',
-    'Fi Graham',
+    'Dusk Virkus',
     'Tensor flow model trained on the color names defined by CSS Color Module.',
     './trainedanalyzers/csscolors.json'
   );
   analyzerCollection.loadFunctionalAnalyzer(
     'Character Look Converter',
-    'Fi Graham',
+    'Dusk Virkus',
     'Calculates color based on how a character looks. Inspired by L337 speak.',
     characterLookConverter
   );
   analyzerCollection.loadFunctionalAnalyzer(
     'ASCII Gray',
-    'Fi Graham',
+    'Dusk Virkus',
     'Calculates a gray value based on ASCII codes of characters.',
     asciiGray
   );
   analyzerCollection.loadFunctionalAnalyzer(
     'Blue Velvet',
-    'Fi Graham',
+    'Dusk Virkus',
     'Creates subtlety changing blueish colors.',
     blueVelvet
   );
