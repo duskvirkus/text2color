@@ -56,7 +56,7 @@ function blueVelvet(text) {
 ```
 analyzerCollection.loadFunctionalAnalyzer(
   'Blue Velvet',
-  'Fi Graham',
+  'Dusk Virkus',
   'Creates subtlety changing blueish colors.',
   blueVelvet
 );
@@ -65,11 +65,11 @@ analyzerCollection.loadFunctionalAnalyzer(
 10. If necessary made changes to your method and continue testing.
 11. Once you think it's done commit the changes, and push them to your forked repository. Then submit a pull request.
 
-*Note: [example pull request is #21](https://github.com/figraham/text2color/pull/21/files)*
+*Note: [example pull request is #21](https://github.com/duskvirkus/text2color/pull/21/files)*
 
 ### Add a Trained Analyzer
 
-Trained analyzers are trained neural networks created in TensorFlow.js. They have 16 inputs created by hashing the text input and 96 outputs that represent a color. Feel free to create your own networks that match this specification, see a following section for tips on doing this. But if you'd like to jump straight into creating a network without knowing much if anything about TensorFlow.js, please use the [Text 2 Color Contributer Tools](https://github.com/figraham/text2colorcontributortools) to do this. Once you've trained a network save it and add it to the `trainedanalyzers` folder and the `loadAnalyers()` method in `application > core > loadanalyzers.js`. For full instructions on this please see the following section.
+Trained analyzers are trained neural networks created in TensorFlow.js. They have 16 inputs created by hashing the text input and 96 outputs that represent a color. Feel free to create your own networks that match this specification, see a following section for tips on doing this. But if you'd like to jump straight into creating a network without knowing much if anything about TensorFlow.js, please use the [Text 2 Color Contributer Tools](https://github.com/duskvirkus/text2colorcontributortools) to do this. Once you've trained a network save it and add it to the `trainedanalyzers` folder and the `loadAnalyers()` method in `application > core > loadanalyzers.js`. For full instructions on this please see the following section.
 
 #### Step by Step Instructions
 

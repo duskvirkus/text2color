@@ -109,7 +109,7 @@ function setupInformationPanel() {
 function setupAnalyzers() {
   analyzerCollection = new AnalyzerCollection();
   loadAnalyzers();
-  analyzerCollection.randomAnalyzer();
+  analyzerCollection.setAnalyzerByName('CSS Colors');
 }
 
 // ########################
